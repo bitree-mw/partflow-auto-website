@@ -1,0 +1,48 @@
+@import "tailwindcss" source(none);
+
+@source "../*.php";
+@source "../partials/*.php";
+@source "../includes/*.php";
+
+/* PartFlow Auto brand palette, matching the application's default theme. */
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+    --color-canvas: #f5f6f8;
+
+    --color-navy-800: #2b3852;
+    --color-navy-900: #172440;
+    --color-navy-950: #0a1630;
+
+    --color-ember-50: #fef5ee;
+    --color-ember-100: #fde6d5;
+    --color-ember-200: #fbcaa9;
+    --color-ember-300: #f8a673;
+    --color-ember-400: #f68f4d;
+    --color-ember-500: #f47a2a;
+    --color-ember-600: #d5651b;
+    --color-ember-700: #a94c14;
+    --color-ember-800: #873d14;
+    --color-ember-900: #6e3414;
+}
+
+@layer base {
+    :focus-visible {
+        outline: 2px solid var(--color-ember-500);
+        outline-offset: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
