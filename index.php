@@ -1,5 +1,30 @@
 <?php
 
+/*
+ * Clean URLs: the web server hands every path that isn't a real file to this
+ * script, so /features and /contact are served by features.php and contact.php.
+ */
+$basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$route = trim(substr($requestPath, strlen($basePath)), '/');
+
+if ($route !== '' && $route !== 'index.php') {
+    if (! in_array($route, ['features', 'contact'], true)) {
+        require __DIR__.'/not-found.php';
+        return;
+    }
+
+    // "/features/" would break the relative asset links, so drop the trailing slash.
+    if (str_ends_with($requestPath, '/')) {
+        $query = $_SERVER['QUERY_STRING'] ?? '';
+        header('Location: '.$basePath.'/'.$route.($query !== '' ? '?'.$query : ''), true, 301);
+        return;
+    }
+
+    require __DIR__.'/'.$route.'.php';
+    return;
+}
+
 require __DIR__.'/includes/bootstrap.php';
 
 $page = 'home';
@@ -34,10 +59,10 @@ require __DIR__.'/partials/header.php';
                 PartFlow Auto runs the stock room and the sales counter for motor-vehicle parts businesses. It tracks stock at every branch, records which vehicles each part fits, handles purchases and transfers, and gives you a point of sale that checks the shelf before it sells.
             </p>
             <div class="mt-9 flex flex-wrap gap-3">
-                <a href="contact.php" class="inline-flex items-center gap-2 rounded-xl bg-ember-500 px-5 py-3 text-sm font-semibold text-navy-950 shadow-lg shadow-ember-500/20 transition hover:bg-ember-400">
+                <a href="contact" class="inline-flex items-center gap-2 rounded-xl bg-ember-500 px-5 py-3 text-sm font-semibold text-navy-950 shadow-lg shadow-ember-500/20 transition hover:bg-ember-400">
                     Book a demo <?= icon('arrow', 'size-4') ?>
                 </a>
-                <a href="features.php" class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5">
+                <a href="features" class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5">
                     See every feature
                 </a>
             </div>
@@ -98,7 +123,7 @@ require __DIR__.'/partials/header.php';
                 <p class="text-sm font-semibold uppercase tracking-[0.14em] text-ember-700">What's inside</p>
                 <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">Built for the parts trade, not adapted to it.</h2>
             </div>
-            <a href="features.php" class="inline-flex items-center gap-2 text-sm font-semibold text-navy-950 hover:text-ember-700">Explore all features <?= icon('arrow', 'size-4') ?></a>
+            <a href="features" class="inline-flex items-center gap-2 text-sm font-semibold text-navy-950 hover:text-ember-700">Explore all features <?= icon('arrow', 'size-4') ?></a>
         </div>
 
         <div class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-4">
@@ -163,7 +188,7 @@ require __DIR__.'/partials/header.php';
             <p class="mt-4 text-lg leading-relaxed text-slate-600">
                 Check today's sales and profit, the revenue trend, and what stock and balances need action. View every branch together or switch to one. Managers only see the branches they are assigned to.
             </p>
-            <a href="features.php#insight" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-950 hover:text-ember-700">Reports &amp; insight <?= icon('arrow', 'size-4') ?></a>
+            <a href="features#insight" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-950 hover:text-ember-700">Reports &amp; insight <?= icon('arrow', 'size-4') ?></a>
         </div>
     </div>
 </section>
@@ -208,7 +233,7 @@ require __DIR__.'/partials/header.php';
                     <?php endforeach; ?>
                 </ul>
 
-                <a href="contact.php" class="mt-9 flex items-center justify-center gap-2 rounded-xl bg-ember-500 px-5 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-ember-400">
+                <a href="contact" class="mt-9 flex items-center justify-center gap-2 rounded-xl bg-ember-500 px-5 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-ember-400">
                     Book a demo <?= icon('arrow', 'size-4') ?>
                 </a>
             </div>

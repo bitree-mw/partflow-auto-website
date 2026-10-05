@@ -6,10 +6,10 @@
  */
 return [
     'nav' => [
-        'home' => ['label' => 'Overview', 'href' => 'index.php'],
-        'features' => ['label' => 'Features', 'href' => 'features.php'],
-        'pricing' => ['label' => 'Pricing', 'href' => 'index.php#pricing'],
-        'contact' => ['label' => 'Book a demo', 'href' => 'contact.php'],
+        'home' => ['label' => 'Overview', 'href' => './'],
+        'features' => ['label' => 'Features', 'href' => 'features'],
+        'pricing' => ['label' => 'Pricing', 'href' => './#pricing'],
+        'contact' => ['label' => 'Book a demo', 'href' => 'contact'],
     ],
 
     'pillars' => [

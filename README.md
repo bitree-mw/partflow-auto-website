@@ -13,13 +13,18 @@ Plain PHP + Tailwind CSS. No database and no framework.
 
 | Path | Purpose |
 | --- | --- |
-| `index.php`, `features.php`, `contact.php` | Pages |
+| `index.php`, `features.php`, `contact.php`, `not-found.php` | Pages (`index.php` also routes the clean URLs) |
+| `.htaccess` | Clean URLs on Apache / cPanel |
 | `includes/config.php` | Site name, contact email/phone — **edit this first** |
 | `includes/content.php` | All page copy, feature lists, FAQ, and preview sample data |
 | `includes/icons.php` | Stroke icon set |
 | `partials/` | Header, footer, CTA, and the POS / dashboard / ledger previews |
 | `src/app.css` | Tailwind source and brand theme |
 | `assets/css/app.css` | Compiled CSS (committed, so hosting needs no build step) |
+
+## Clean URLs
+
+Pages are linked without the `.php` extension (`/features`, `/contact`). Any path that isn't a real file goes to `index.php`, which serves the matching page or a 404. Herd and `php -S` do this on their own. On Apache/cPanel, the included `.htaccess` does it (needs `mod_rewrite`). Old `.php` addresses get a 301 redirect to the clean URL.
 
 ## Styles
 

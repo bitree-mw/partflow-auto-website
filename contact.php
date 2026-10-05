@@ -71,7 +71,7 @@ require __DIR__.'/partials/header.php';
             <div class="mb-6 rounded-xl bg-rose-50 p-4 text-sm text-rose-800 ring-1 ring-rose-200" role="alert">Please fix the highlighted fields and try again.</div>
         <?php endif; ?>
 
-        <form method="post" action="contact.php" class="<?= $mailto !== null ? 'mt-8' : '' ?> grid gap-5 sm:grid-cols-2" data-demo-form data-email="<?= e($config['contact_email']) ?>" novalidate>
+        <form method="post" action="contact" class="<?= $mailto !== null ? 'mt-8' : '' ?> grid gap-5 sm:grid-cols-2" data-demo-form data-email="<?= e($config['contact_email']) ?>" novalidate>
             <?php
             $textFields = [
                 'name' => ['Your name', 'text', 'name', 'Chikondi Phiri'],

@@ -1,0 +1,10 @@
+# Clean URLs on Apache / cPanel: any path that isn't a real file or folder
+# goes to index.php, which serves /features and /contact (see the top of index.php).
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>

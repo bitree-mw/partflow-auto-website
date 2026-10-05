@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+// Old "page.php" addresses redirect to the clean URL. Form posts are left alone so they still submit.
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+if (str_ends_with($requestPath, '.php') && in_array($_SERVER['REQUEST_METHOD'] ?? 'GET', ['GET', 'HEAD'], true)) {
+    $query = $_SERVER['QUERY_STRING'] ?? '';
+    header('Location: '.preg_replace('~(?:index)?\.php$~', '', $requestPath).($query !== '' ? '?'.$query : ''), true, 301);
+    exit;
+}
+
 $config = require __DIR__.'/config.php';
 $content = require __DIR__.'/content.php';
 
