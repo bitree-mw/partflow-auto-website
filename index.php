@@ -182,19 +182,40 @@ require __DIR__.'/partials/header.php';
     </div>
 </section>
 
-<!-- Stack -->
-<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <p class="text-center text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">Built on a proven stack</p>
-    <ul class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        <?php foreach ($content['stack'] as $item): ?>
-            <li class="rounded-xl border border-slate-200 bg-white px-4 py-4 text-center">
-                <p class="font-display font-bold text-navy-950"><?= e($item['name']) ?></p>
-                <p class="mt-1 text-xs text-slate-500"><?= e($item['note']) ?></p>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+<!-- Pricing -->
+<section id="pricing" class="scroll-mt-20 border-t border-slate-200 bg-white">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
+        <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.14em] text-ember-700">Pricing</p>
+            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">One plan with every feature.</h2>
+            <p class="mt-4 text-lg leading-relaxed text-slate-600">
+                One monthly subscription covers the point of sale, the stock room, and the reports. No feature is locked behind a higher plan.
+            </p>
+        </div>
+
+        <div class="relative overflow-hidden rounded-3xl bg-navy-950 p-8 text-white shadow-2xl shadow-navy-950/20 sm:p-10">
+            <div class="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-ember-500/20 blur-3xl"></div>
+            <div class="relative">
+                <p class="text-sm font-semibold text-ember-400">PartFlow Auto subscription</p>
+                <p class="mt-4 flex flex-wrap items-baseline gap-x-2">
+                    <span class="font-display text-4xl font-bold tracking-tight sm:text-5xl"><?= e($config['price']) ?></span>
+                    <span class="whitespace-nowrap text-lg text-white/60">/ <?= e($config['price_period']) ?></span>
+                </p>
+
+                <ul class="mt-8 grid gap-3 text-sm text-white/80 sm:grid-cols-2">
+                    <?php foreach ($content['plan_includes'] as $item): ?>
+                        <li class="flex gap-3"><span class="mt-0.5 shrink-0 text-ember-400"><?= icon('check', 'size-4') ?></span><?= e($item) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+
+                <a href="contact.php" class="mt-9 flex items-center justify-center gap-2 rounded-xl bg-ember-500 px-5 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-ember-400">
+                    Book a demo <?= icon('arrow', 'size-4') ?>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 
-<?php require __DIR__.'/partials/cta.php'; ?>
+<div class="pt-20"><?php require __DIR__.'/partials/cta.php'; ?></div>
 
 <?php require __DIR__.'/partials/footer.php'; ?>

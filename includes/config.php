@@ -9,6 +9,10 @@ return [
     'tagline' => 'Auto parts operations',
     'currency' => 'MWK',
 
+    // Subscription price shown in the pricing section and FAQ.
+    'price' => 'MK50,000',
+    'price_period' => 'month',
+
     // Where demo requests from contact.php are sent (opens the visitor's mail app).
     'contact_email' => 'demo@partflowautomw.com',
 

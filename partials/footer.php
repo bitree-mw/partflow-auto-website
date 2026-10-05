@@ -19,6 +19,7 @@
                 <li><a class="hover:text-white" href="features.php#stock">Multi-branch stock</a></li>
                 <li><a class="hover:text-white" href="features.php#money">Payments &amp; balances</a></li>
                 <li><a class="hover:text-white" href="features.php#insight">Dashboard &amp; reports</a></li>
+                <li><a class="hover:text-white" href="index.php#pricing">Pricing</a></li>
             </ul>
         </div>
 

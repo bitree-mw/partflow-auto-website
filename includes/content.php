@@ -8,6 +8,7 @@ return [
     'nav' => [
         'home' => ['label' => 'Overview', 'href' => 'index.php'],
         'features' => ['label' => 'Features', 'href' => 'features.php'],
+        'pricing' => ['label' => 'Pricing', 'href' => 'index.php#pricing'],
         'contact' => ['label' => 'Book a demo', 'href' => 'contact.php'],
     ],
 
@@ -142,16 +143,19 @@ return [
         ],
     ],
 
-    'stack' => [
-        ['name' => 'Laravel 12', 'note' => 'Application framework'],
-        ['name' => 'PHP 8.4', 'note' => 'Runtime'],
-        ['name' => 'MySQL', 'note' => 'Database'],
-        ['name' => 'Tailwind CSS 4', 'note' => 'Interface styling'],
-        ['name' => 'Sanctum', 'note' => 'API authentication'],
-        ['name' => 'cPanel-ready', 'note' => 'Cron-driven email queue'],
+    'plan_includes' => [
+        'Point of sale with vehicle fitment search',
+        'Stock tracked separately at every branch',
+        'Purchases, transfers, and stock takes',
+        'Payments, customer balances, and expenses',
+        'Dashboard, reports, and CSV exports',
+        'Low-stock email alerts',
+        'Roles, permissions, and branch access',
+        'Your company name, logo, and colours',
     ],
 
     'faq' => [
+        ['q' => 'How much does it cost?', 'a' => 'PartFlow Auto is '.$config['price'].' a '.$config['price_period'].', and every feature is included.'],
         ['q' => 'Does it handle more than one branch?', 'a' => 'Yes. Stock is tracked at each site, and users are assigned to the branches they work in. Transfers move parts between branches and leave a record at both ends.'],
         ['q' => 'Which payment methods can we record?', 'a' => 'Cash, bank, mobile money, and card. Each payment is saved against the account that received it. PartFlow Auto records payments. It is not a card or mobile-money gateway.'],
         ['q' => 'Can staff give any discount they like?', 'a' => 'No. An administrator sets a maximum discount percentage, and each part has a minimum selling price. Checkout applies the stricter of the two on the server.'],
