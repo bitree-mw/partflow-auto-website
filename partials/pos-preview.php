@@ -67,9 +67,9 @@ $removed = $subtotal > 0 ? $sample['discount'] / $subtotal * 100 : 0;
             </div>
 
             <div class="mt-auto pt-4">
-                <div class="flex items-center justify-between rounded-xl bg-ember-500 px-4 py-3 text-navy-950">
-                    <span class="text-sm font-bold">Complete sale</span>
-                    <span class="text-sm font-bold"><?= e(money($total)) ?></span>
+                <div class="flex items-center justify-between gap-2 whitespace-nowrap rounded-xl bg-ember-500 px-3 py-3 text-xs font-bold text-navy-950">
+                    <span>Complete sale</span>
+                    <span><?= e(money($total)) ?></span>
                 </div>
             </div>
         </div>
