@@ -23,6 +23,6 @@ return [
     'contact_email' => 'demo@partflowautomw.com',
 
     // Optional: leave empty to hide.
-    'contact_phone' => '',
+    'contact_phone' => '+265 991 538 162',
     'contact_location' => 'Blantyre, Malawi',
 ];
