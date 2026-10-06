@@ -209,34 +209,42 @@ require __DIR__.'/partials/header.php';
 
 <!-- Pricing -->
 <section id="pricing" class="scroll-mt-20 border-t border-slate-200 bg-white">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
-        <div>
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div class="max-w-2xl">
             <p class="text-sm font-semibold uppercase tracking-[0.14em] text-ember-700">Pricing</p>
-            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">One plan with every feature.</h2>
+            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">A package for your sites.</h2>
+            <p class="mt-4 font-semibold text-ember-700">Try PartFlow Auto with a 1-month trial on any package.</p>
             <p class="mt-4 text-lg leading-relaxed text-slate-600">
-                One monthly subscription covers the point of sale, the stock room, and the reports. No feature is locked behind a higher plan.
+                Choose your tier by the number of sites you run. Each monthly subscription covers all sites in that range, with the point of sale, stock room, and reports included.
             </p>
         </div>
 
-        <div class="relative overflow-hidden rounded-3xl bg-navy-950 p-8 text-white shadow-2xl shadow-navy-950/20 sm:p-10">
-            <div class="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-ember-500/20 blur-3xl"></div>
-            <div class="relative">
-                <p class="text-sm font-semibold text-ember-400">PartFlow Auto subscription</p>
-                <p class="mt-4 flex flex-wrap items-baseline gap-x-2">
-                    <span class="font-display text-4xl font-bold tracking-tight sm:text-5xl"><?= e($config['price']) ?></span>
-                    <span class="whitespace-nowrap text-lg text-white/60">/ <?= e($config['price_period']) ?></span>
-                </p>
-
-                <ul class="mt-8 grid gap-3 text-sm text-white/80 sm:grid-cols-2">
-                    <?php foreach ($content['plan_includes'] as $item): ?>
-                        <li class="flex gap-3"><span class="mt-0.5 shrink-0 text-ember-400"><?= icon('check', 'size-4') ?></span><?= e($item) ?></li>
-                    <?php endforeach; ?>
-                </ul>
-
-                <a href="contact" class="mt-9 flex items-center justify-center gap-2 rounded-xl bg-ember-500 px-5 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-ember-400">
-                    Book a demo <?= icon('arrow', 'size-4') ?>
-                </a>
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <?php foreach ($config['pricing_tiers'] as $tier): ?>
+                <article class="flex flex-col rounded-2xl bg-navy-950 p-6 text-white">
+                    <h3 class="font-display text-xl font-bold text-ember-400"><?= e($tier['name']) ?></h3>
+                    <p class="mt-3 min-h-20 text-sm leading-relaxed text-white/80"><?= e($tier['description']) ?></p>
+                    <p class="mt-6 font-display text-3xl font-bold tracking-tight"><?= e($tier['price']) ?></p>
+                    <p class="mt-2 text-sm text-white/70">Total per <?= e($config['price_period']) ?></p>
+                    <p class="mt-3 text-sm font-semibold text-ember-400">1-month trial available</p>
+                    <p class="mt-6 border-t border-white/15 pt-6 text-sm font-semibold">Included in this package</p>
+                    <ul class="mb-8 mt-4 space-y-3 text-sm text-white/80">
+                        <?php foreach ($content['plan_includes'][$tier['id']] as $item): ?>
+                            <li class="flex gap-3"><span class="mt-0.5 shrink-0 text-ember-400"><?= icon('check', 'size-4') ?></span><?= e($item) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <a href="contact" aria-label="Book a demo for <?= e($tier['name']) ?>" class="mt-auto flex items-center justify-center gap-2 rounded-xl bg-ember-500 px-5 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-ember-400">
+                        Book a demo <?= icon('arrow', 'size-4') ?>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </div>
+        <div class="mt-6 rounded-2xl border border-ember-200 bg-ember-50 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8">
+            <div>
+                <h3 class="font-semibold text-navy-950">Setup, installation &amp; training</h3>
+                <p class="mt-2 text-sm text-slate-600">An additional one-time fee with any package. Includes one day of training.</p>
             </div>
+            <p class="mt-4 shrink-0 font-display text-2xl font-bold text-navy-950 sm:mt-0"><?= e($config['setup_fee']) ?></p>
         </div>
     </div>
 </section>
