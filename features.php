@@ -55,11 +55,10 @@ require __DIR__.'/partials/header.php';
                     <div class="mt-6"><?php require __DIR__.'/partials/dashboard-preview.php'; ?></div>
                 <?php elseif ($group['id'] === 'control'): ?>
                     <div class="mt-6 grid gap-3 sm:grid-cols-3">
-                        <?php foreach ([['Administrator', 'Everything, all branches', '*'], ['Manager', 'Stock, purchases, reports', 'stock.*'], ['Sales staff', 'POS at assigned branch', 'sales.create']] as [$role, $scope, $perm]): ?>
+                        <?php foreach ([['Administrator', 'Everything, all branches'], ['Manager', 'Stock, purchases, reports'], ['Sales staff', 'POS at assigned branch']] as [$role, $scope]): ?>
                             <div class="rounded-xl border border-slate-200 bg-white p-4">
                                 <p class="font-semibold text-navy-950"><?= e($role) ?></p>
                                 <p class="mt-1 text-sm text-slate-600"><?= e($scope) ?></p>
-                                <p class="mt-3 inline-block rounded-md bg-navy-950/5 px-2 py-0.5 font-mono text-xs text-navy-800"><?= e($perm) ?></p>
                             </div>
                         <?php endforeach; ?>
                     </div>

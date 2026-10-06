@@ -134,7 +134,7 @@ return [
             'title' => 'Your business, your rules, your brand.',
             'intro' => 'Administrators decide who can do what and where, and make the system look like their own.',
             'points' => [
-                'Custom roles with fine-grained and wildcard permissions',
+                'Custom roles that control what each team member can see and do',
                 'User-to-branch assignments, checked on every request',
                 'Create, deactivate, and reactivate users and reset passwords. The last administrator cannot be removed',
                 'Your company name, logo, and three brand colours on the login, back-office, and POS screens',
