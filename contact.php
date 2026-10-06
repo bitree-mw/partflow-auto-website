@@ -6,7 +6,7 @@ $page = 'contact';
 $pageTitle = 'Book a demo';
 $pageDescription = 'Book a PartFlow Auto demo and see the point of sale, multi-branch stock, and reports working with your own parts.';
 
-$branchOptions = ['1 branch', '2–3 branches', '4–10 branches', 'More than 10 branches'];
+$branchOptions = ['1 branch', '2–3 branches', '4–8 branches', '9 or more branches'];
 $values = ['name' => '', 'business' => '', 'email' => '', 'branches' => '', 'message' => ''];
 $errors = [];
 $mailto = null;
